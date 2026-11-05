@@ -1,0 +1,12 @@
+{
+  "name": "stitchloom",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Free crochet and knitting gauge, blanket sizing and shaping calculators.",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
