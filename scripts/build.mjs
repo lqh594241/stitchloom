@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'dist');
 const pages = ['index.html', 'blanket-size-calculator.html', 'stitch-increase-decrease-calculator.html', 'privacy.html', 'terms.html', '404.html'];
-const files = [...pages, 'styles.css', 'app.js', 'calculator.js', 'favicon.svg', 'robots.txt'];
+const files = [...pages, 'styles.css', 'app.js', 'ads.js', 'calculator.js', 'favicon.svg', 'robots.txt'];
 let origin;
 if (process.env.SITE_URL) {
   origin = new URL(process.env.SITE_URL);

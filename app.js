@@ -142,7 +142,6 @@
     $('print-area').replaceChildren(brand, title, content);
     window.print();
   });
-  $('close-ad').addEventListener('click', () => { $('ad-banner').hidden = true; });
   $('year').textContent = new Date().getFullYear();
   render();
 })();

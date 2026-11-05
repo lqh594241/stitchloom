@@ -41,16 +41,19 @@ Cloudflare Workers 静态资源部署：构建命令 `npm run build`，静态资
 
 ## 广告和 Ahrefs
 
-当前没有真实广告或统计请求，也没有复制 Layerwise 的专属广告位。
+三个工具页已接入用户提供的本站 HilltopAds 横幅与点击弹窗广告，代码集中在 `ads.js`。Ahrefs 保持空白。
 
 三个工具页都预留：
 
 - `AHREFS_ANALYTICS_START/END`：head 中粘贴 Ahrefs 统计代码。
 - `AD_HEAD_START/END`：仅当广告后台要求放在 head 时粘贴。
-- `AD_BANNER_START/END`：顶部普通文档流的 100% 宽横幅，随页面滚动。代码放入 `#banner-creative`，移除 `#ad-banner` 上的 `hidden`；右侧 × 可关闭本次页面上的横幅。
+- `AD_BANNER_START/END`：顶部普通文档流的 100% 宽横幅，随页面滚动。`ads.js` 的 `HILLTOPADS_BANNER_START/END` 加载用户提供的真实横幅脚本；素材等比居中、小屏缩小，未填充时不占高度。右侧仅有 ×，关闭后本次页面不再展示，刷新恢复。不重复请求广告。
+- `ads.js` 的 `HILLTOPADS_POPUP_START/END`：点击 Save project note、Copy results 或 Print this plan 时尝试打开用户提供的 `bold-consequence.com` 广告链接，原功能继续执行。每次页面访问最多尝试一次；输入、重置、切换单位和关闭横幅不会触发。脚本合成点击及禁用按钮不触发；浏览器可能以标签页或窗口打开，也可能拦截。直接链接不作为脚本加载。
 - `AD_BODY_START/END`：仅当广告后台要求放到 body 末尾时粘贴。
 
-不要在多个位置重复添加同一个脚本。实际素材大小和展示由平台提供；新站通常需要单独的站点与广告位。接入后同步更新隐私说明及实际需要的同意设置。
+不要在多个位置重复添加同一个脚本。没有接入视频广告。实际素材大小和展示由平台提供；`loaded` 只表示脚本已加载，不保证广告填充。可在开发者工具检查 `#hilltopads-banner-loader` 的 `data-ad-status`（loading/loaded/error）以及 `#hilltopads-integration` 的 `data-popup-status`（ready/attempted/error）。隐私页已同步说明；后续启用 Ahrefs 时再更新对应说明。
+
+浏览器检查使用拦截后的测试素材与模拟弹窗，不访问真实广告库存，不把布局或代码检查当作真实广告展示验证。
 
 ## 计算边界
 
