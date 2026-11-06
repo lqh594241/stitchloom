@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Free crochet and knitting gauge, blanket sizing and shaping calculators.",
+  "homepage": "https://stitchloom.luqihang594241.workers.dev/",
   "scripts": {
     "dev": "node server.mjs",
     "build": "node scripts/build.mjs",
